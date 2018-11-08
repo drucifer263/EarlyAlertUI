@@ -1,0 +1,81 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Template.master.cs" Inherits="EAS.Template" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Master</title>
+    <%--Bootstrap Reference With JS Reference--%>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        html, body {
+            margin: 0px;
+            height: 100%;
+            width: 100%;
+            background-color: #F7F7F7;
+        }
+
+        #box {
+            margin: 12.5% 25%;
+            box-shadow: 5px 5px 5px rgba(0,0,0,.4);
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <%--Nav--%>
+        <nav class="navbar navbar-inverse" style="background-color: #9E1B34">
+            <div class="container-fluid">
+                <a class="navbar-left">
+                    <img src="Images/Dashboard/cst_logo.png" style="border-radius: 2.5px; box-shadow: 5px 5px 5px rgba(70,70,70,.5)" />
+                </a>
+                <asp:ContentPlaceHolder ID="Nav" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </nav>
+        <%--Template Box--%>
+        <div id="box" class="card" style="min-width: 37.5%;">
+            <div class="card-header" style="background-color: #4DAADC; color: white;"> 
+                Download & Upload Template
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <asp:Label ID="lblDownlaodTitle" runat="server" Font-Size="Medium">Download A Performance Template File</asp:Label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <asp:Label ID="lblDownlaod" runat="server" Font-Size="Small">Performance Template</asp:Label>
+                    </div>
+                    <div class="col-lg-2">
+                        <asp:Button ID="btnDownload" runat="server" CssClass="btn btn-success btn-sm" Text="Download" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <asp:Label ID="lblUpload" runat="server" Font-Size="Small">Upload a Performance File</asp:Label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <asp:Label ID="lblFile" runat="server" Font-Size="Small">File:</asp:Label>
+                    </div>
+                    <div class="col-lg-2">
+                        <asp:Button ID="btnFile" runat="server" CssClass="btn btn-primary btn-sm" Text="Choose A File" />
+                    </div>
+                </div>
+                <div class="row" style="margin-top:1%">
+                    <div class="col-lg-4">
+                        <textarea id="txtaComment" cols="78" rows="5" placeholder="Comments . . ."></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
