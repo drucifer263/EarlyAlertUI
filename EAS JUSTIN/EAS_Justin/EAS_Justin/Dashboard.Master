@@ -1,0 +1,308 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.master.cs" Inherits="EAS.Dashboard" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Master</title>
+    <%--Bootstrap Reference With JS Reference--%>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Course', 'People(in thousands)'],
+                ['CIS', 11],
+                ['CHEM', 2],
+                ['PHYS', 2],
+                ['MATH', 2],
+                ['BIO', 11],
+                ['EES', 7]
+            ]);
+
+            var options = {
+                title: ''
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
+    <style>
+        html, body {
+            margin: 0px;
+            height: 100%;
+            width: 100%;
+            background-color: #F7F7F7;
+        }
+
+        #box {
+            margin: 2.5%;
+            box-shadow: 5px 5px 5px rgba(0,0,0,.4);
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <%--Nav--%>
+        <nav class="navbar navbar-inverse" style="background-color: #9E1B34">
+            <div class="container-fluid">
+                <a class="navbar-left">
+                    <img src="Images/Dashboard/cst_logo.png" style="border-radius: 2.5px; box-shadow: 5px 5px 5px rgba(70,70,70,.5)" />
+                </a>
+                <asp:ContentPlaceHolder ID="Nav" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </nav>
+
+        <%--Statistics Box--%>
+        <div id="box" class="card" style="min-width: 61%; float: left;">
+            <div class="card-header" style="background-color: #F14C53; color: white;">
+                Statistics
+            </div>
+            <div class="card-body">
+                <div id="piechart" style="height: 100%; width: 100%"></div>
+                <asp:ContentPlaceHolder ID="Stat" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+        <%--Deadline Box--%>
+        <div id="box" class="card" style="min-width: 31%; float: left; margin-left: 0px;">
+            <div class="card-header" style="background-color: #A680B8; color: white;">
+                Set & View Deadlines
+            </div>
+            <div class="card-body" style="text-align: center">
+                <asp:Calendar ID="calDeadlines" runat="server" BorderStyle="None" Height="98%" Width="98%">
+                    <NextPrevStyle BorderStyle="None" HorizontalAlign="Justify" />
+                    <OtherMonthDayStyle ForeColor="#999999" />
+                    <TitleStyle BackColor="White" />
+                    <WeekendDayStyle ForeColor="Red" />
+                </asp:Calendar>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+        <%--Search Tools Box--%>
+        <div id="box" class="card" style="clear: both; height: 300px">
+            <div class="card-header" style="background-color: #61C46E; color: white;">
+                Search Tools
+            </div>
+      
+            <%--Everything inside the search tools box *JUSTIN LAM*--%>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4"></div>
+                    <div class=" col-lg-4" style="margin:1%;">
+                        <input class="form-control d-inline" placeholder="Search Students" style="width:80%;"/>               
+                       <button type="button" class="btn btn-success d-inline">Search</button>
+                    </div>
+                    <div class=" col-lg-4"></div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-lg-2">
+                        <asp:DropDownList ID="ddlAdvisors" runat="server" class="form-control">
+                            <asp:ListItem Enabled="true" Text="Advisor" Value="-1"></asp:ListItem>
+                            <asp:ListItem Text="All" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Erin Spiotta" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Thomas Price" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Stephanie Ballard" Value="3"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-lg-2">
+                        <asp:DropDownList ID="ddlMajor" runat="server" class="form-control">
+                            <asp:ListItem Enabled="true" Text="Major" Value="-1"></asp:ListItem>
+                            <asp:ListItem Text="All" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Biology" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Chemistry" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Computer Science" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="Earth & Environmental Science" Value="4"></asp:ListItem>
+                            <asp:ListItem Text="Information Science & Technology" Value="5"></asp:ListItem>
+                            <asp:ListItem Text="Physics" Value="6"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-lg-2">
+                        <asp:DropDownList ID="ddlTerm" runat="server" class="form-control">
+                            <asp:ListItem Enabled="true" Text="Term" Value="-1"></asp:ListItem>
+                            <asp:ListItem Text="All" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="FA18" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="SP19" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="FA19" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="SP20" Value="4"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-lg-2">
+                        <asp:DropDownList ID="ddlAcademicStanding" runat="server" class="form-control">
+                            <asp:ListItem Enabled="true" Text="Academic Standing" Value="-1"></asp:ListItem>
+                            <asp:ListItem Text="All" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Academic Good Standing" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Academic Warning" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Academic Probation" Value="3"></asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">
+                        <p><strong>Fly in 4?</strong></p>
+                        <asp:RadioButtonList ID="rbFlyin4" runat="server">
+                            <asp:ListItem Text="Yes" Value="Yes" />
+                            <asp:ListItem Text="No" Value="No" />
+                        </asp:RadioButtonList>
+                    </div>
+                 
+                    <div class="col-lg-1">
+                        <p><strong>Level?</strong></p>
+                        <asp:RadioButtonList ID="rbLevel" runat="server">
+                            <asp:ListItem Text="One" Value="One" />
+                            <asp:ListItem Text="Two" Value="Two" />
+                        </asp:RadioButtonList>
+                    </div>
+                       <div class ="col-lg-1"></div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-body">
+            <asp:ContentPlaceHolder ID="Search" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <%--{Performance Profile Box--%>
+        <div id="box" class="card">
+            <div class="card-header" style="background-color: #F9AC4E; color: white;">
+                Performance Profiles For Current Term
+            </div>
+            <%--TABLE INFO JUSTIN LAM--%>
+            <div class="container-fluid">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Advisor First Name</th>
+                            <th scope="col">Advisor Last Name</th>
+                            <th scope="col">Student First Name</th>
+                            <th scope="col">Student Last Name</th>
+                            <th scope="col">TUID</th>
+                            <th scope="col">Major</th>
+                            <th scope="col">Term</th>
+                            <th scope="col">Academic Standing</th>
+                            <th scope="col">Fly in 4</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Erin</td>
+                            <td>Spiotta</td>
+                            <td>John</td>
+                            <td>Boo</td>
+                            <td>666999666</td>
+                            <td>Biology</td>
+                            <td>FA18</td>
+                            <td>Academic Good Standing</td>
+                            <td>Yes</td>
+                            <td>Level 1</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                                 <tr>
+                            <th scope="row">2</th>
+                            <td>Thomas</td>
+                            <td>Price</td>
+                            <td>Michael</td>
+                            <td>Robinson</td>
+                            <td>123123123</td>
+                            <td>Earth & Environmental Science</td>
+                            <td>FA18</td>
+                            <td>Academic Warning</td>
+                            <td>Yes</td>
+                            <td>Level 1</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                                     <tr>
+                            <th scope="row">3</th>
+                            <td>Thomas</td>
+                            <td>Price</td>
+                            <td>Alexander</td>
+                            <td>Robson</td>
+                            <td>321321321</td>
+                            <td>Physics</td>
+                            <td>FA19</td>
+                            <td>Academic Probation</td>
+                            <td>No</td>
+                            <td>Level 2</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                                     <tr>
+                            <th scope="row">4</th>
+                            <td>Erin</td>
+                            <td>Spiotta</td>
+                            <td>Jennifer</td>
+                            <td>Pinsker</td>
+                            <td>987654321</td>
+                            <td>Chemistry</td>
+                            <td>SP19</td>
+                            <td>Academic Good Standing</td>
+                            <td>No</td>
+                            <td>Level 2</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                                              <tr>
+                            <th scope="row">5</th>
+                            <td>Stephanie</td>
+                            <td>Ballard</td>
+                            <td>Bob</td>
+                            <td>Robson</td>
+                            <td>980980765</td>
+                            <td>Information Science & Technology</td>
+                            <td>SP19</td>
+                            <td>Academic Good Standing</td>
+                            <td>Yes</td>
+                            <td>Level 2</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                                              <tr>
+                            <th scope="row">6</th>
+                            <td>Stephanie</td>
+                            <td>Ballard</td>
+                            <td>Justin</td>
+                            <td>Lam</td>
+                            <td>915432123</td>
+                            <td>Information Science & Technology</td>
+                            <td>FA18</td>
+                            <td>Academic Good Standing</td>
+                            <td>No</td>
+                            <td>Level 2</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-body">
+                <asp:ContentPlaceHolder ID="performace" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+    </form>
+</body>
+</html>
