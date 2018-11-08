@@ -1,4 +1,5 @@
-﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -72,7 +73,10 @@
     <Content Include="AdvisorDash.aspx" />
     <Content Include="FacultyTemplate.aspx" />
     <Content Include="Images\Dashboard\cst_logo.png" />
+    <Content Include="Images\Tindex.ico" />
     <Content Include="Web.config" />
+    <Content Include="AdminStudentPerformanceProfile.aspx" />
+    <Content Include="AdvisorStudentPerformanceProfile.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdminDash.aspx.cs">
@@ -111,6 +115,13 @@
       <DependentUpon>FacultyTemplate.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StudentPerformanceProfile.Master.cs">
+      <DependentUpon>StudentPerformanceProfile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="StudentPerformanceProfile.Master.designer.cs">
+      <DependentUpon>StudentPerformanceProfile.Master</DependentUpon>
+    </Compile>
     <Compile Include="Template.Master.cs">
       <DependentUpon>Template.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -118,11 +129,26 @@
     <Compile Include="Template.Master.designer.cs">
       <DependentUpon>Template.Master</DependentUpon>
     </Compile>
+    <Compile Include="AdminStudentPerformanceProfile.aspx.cs">
+      <DependentUpon>AdminStudentPerformanceProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminStudentPerformanceProfile.aspx.designer.cs">
+      <DependentUpon>AdminStudentPerformanceProfile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdvisorStudentPerformanceProfile.aspx.cs">
+      <DependentUpon>AdvisorStudentPerformanceProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdvisorStudentPerformanceProfile.aspx.designer.cs">
+      <DependentUpon>AdvisorStudentPerformanceProfile.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Dashboard.Master" />
     <None Include="packages.config" />
     <Content Include="Template.Master" />
+    <Content Include="StudentPerformanceProfile.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
