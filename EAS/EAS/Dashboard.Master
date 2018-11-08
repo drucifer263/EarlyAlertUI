@@ -8,6 +8,33 @@
     <%--Bootstrap Reference With JS Reference--%>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Course', 'People(in thousands)'],
+                ['CIS', 11],
+                ['CHEM', 2],
+                ['PHYS', 2],
+                ['MATH', 2],
+                ['BIO', 11],
+                ['EES', 7]
+            ]);
+
+            var options = {
+                title: ''
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+            chart.draw(data, options);
+        }
+    </script>
+
     <style>
         html, body {
             margin: 0px;
@@ -39,29 +66,36 @@
         </nav>
 
         <%--Statistics Box--%>
-        <div id="box" class="card" style="min-width: 55%; float:left;">
+        <div id="box" class="card" style="min-width: 61%; float: left;">
             <div class="card-header" style="background-color: #F14C53; color: white;">
                 Statistics
             </div>
             <div class="card-body">
+                <div id="piechart" style="height: 219.2px; width: 50%"></div>
                 <asp:ContentPlaceHolder ID="Stat" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
         </div>
 
         <%--Deadline Box--%>
-        <div id="box" class="card" style="min-width: 37.5%; float:left; margin-left: 0px;">
+        <div id="box" class="card" style="min-width: 31%; float: left; margin-left: 0px;">
             <div class="card-header" style="background-color: #A680B8; color: white;">
                 Set & View Deadlines
             </div>
-            <div class="card-body">
+            <div class="card-body" style="text-align: center">
+                <asp:Calendar ID="calDeadlines" runat="server" BorderStyle="None" Height="98%" Width="98%">
+                    <NextPrevStyle BorderStyle="None" HorizontalAlign="Justify" />
+                    <OtherMonthDayStyle ForeColor="#999999" />
+                    <TitleStyle BackColor="White" />
+                    <WeekendDayStyle ForeColor="Red" />
+                </asp:Calendar>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
         </div>
 
         <%--Search Tools Box--%>
-        <div id="box" class="card"  style =" clear:both">
+        <div id="box" class="card" style="clear: both">
             <div class="card-header" style="background-color: #61C46E; color: white;">
                 Search Tools
             </div>
@@ -70,9 +104,9 @@
                 </asp:ContentPlaceHolder>
             </div>
         </div>
-        
+
         <%--{Performance Profile Box--%>
-         <div id="box" class="card">
+        <div id="box" class="card">
             <div class="card-header" style="background-color: #F9AC4E; color: white;">
                 Performance Profiles For Current Term
             </div>
@@ -81,7 +115,7 @@
                 </asp:ContentPlaceHolder>
             </div>
         </div>
-        
+
     </form>
 </body>
 </html>
