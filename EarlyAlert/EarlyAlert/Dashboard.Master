@@ -71,7 +71,7 @@
                 Statistics
             </div>
             <div class="card-body">
-                <div id="piechart" style="height: 219.2px; width: 50%"></div>
+                <div id="piechart" style="height: 100%; width: 100%"></div>
                 <asp:ContentPlaceHolder ID="Stat" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
@@ -95,20 +95,201 @@
         </div>
 
         <%--Search Tools Box--%>
-        <div id="box" class="card" style="clear: both">
+        <div id="box" class="card" style="clear: both; height: 300px">
             <div class="card-header" style="background-color: #61C46E; color: white;">
                 Search Tools
             </div>
-            <div class="card-body">
-                <asp:ContentPlaceHolder ID="Search" runat="server">
-                </asp:ContentPlaceHolder>
+      
+            <%--Everything inside the search tools box *JUSTIN LAM*--%>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-4"></div>
+                    <div class=" col-lg-4" style="margin:1%;">
+                        <input class="form-control d-inline" placeholder="Search Students" style="width:80%;"/>               
+                       <button type="button" class="btn btn-success d-inline">Search</button>
+                    </div>
+                    <div class=" col-lg-4"></div>
+                </div>
+               
+                <div class="row">
+                    <div class="col-lg-2">
+                        <asp:DropDownList ID="ddlAdvisors" runat="server" class="form-control">
+                            <asp:ListItem Enabled="true" Text="Advisor" Value="-1"></asp:ListItem>
+                            <asp:ListItem Text="All" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Erin Spiotta" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Thomas Price" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Stephanie Ballard" Value="3"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-lg-2">
+                        <asp:DropDownList ID="ddlMajor" runat="server" class="form-control">
+                            <asp:ListItem Enabled="true" Text="Major" Value="-1"></asp:ListItem>
+                            <asp:ListItem Text="All" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Biology" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Chemistry" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Computer Science" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="Earth & Environmental Science" Value="4"></asp:ListItem>
+                            <asp:ListItem Text="Information Science & Technology" Value="5"></asp:ListItem>
+                            <asp:ListItem Text="Physics" Value="6"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-lg-2">
+                        <asp:DropDownList ID="ddlTerm" runat="server" class="form-control">
+                            <asp:ListItem Enabled="true" Text="Term" Value="-1"></asp:ListItem>
+                            <asp:ListItem Text="All" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="FA18" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="SP19" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="FA19" Value="3"></asp:ListItem>
+                            <asp:ListItem Text="SP20" Value="4"></asp:ListItem>
+                        </asp:DropDownList>
+                    </div>
+                    <div class="col-lg-2">
+                        <asp:DropDownList ID="ddlAcademicStanding" runat="server" class="form-control">
+                            <asp:ListItem Enabled="true" Text="Academic Standing" Value="-1"></asp:ListItem>
+                            <asp:ListItem Text="All" Value="0"></asp:ListItem>
+                            <asp:ListItem Text="Academic Good Standing" Value="1"></asp:ListItem>
+                            <asp:ListItem Text="Academic Warning" Value="2"></asp:ListItem>
+                            <asp:ListItem Text="Academic Probation" Value="3"></asp:ListItem>
+                        </asp:DropDownList>
+
+                    </div>
+                    <div class="col-lg-1"></div>
+                    <div class="col-lg-1">
+                        <p><strong>Fly in 4?</strong></p>
+                        <asp:RadioButtonList ID="rbFlyin4" runat="server">
+                            <asp:ListItem Text="Yes" Value="Yes" />
+                            <asp:ListItem Text="No" Value="No" />
+                        </asp:RadioButtonList>
+                    </div>
+                 
+                    <div class="col-lg-1">
+                        <p><strong>Level?</strong></p>
+                        <asp:RadioButtonList ID="rbLevel" runat="server">
+                            <asp:ListItem Text="One" Value="One" />
+                            <asp:ListItem Text="Two" Value="Two" />
+                        </asp:RadioButtonList>
+                    </div>
+                       <div class ="col-lg-1"></div>
+                </div>
+
             </div>
+        </div>
+
+        <div class="card-body">
+            <asp:ContentPlaceHolder ID="Search" runat="server">
+            </asp:ContentPlaceHolder>
         </div>
 
         <%--{Performance Profile Box--%>
         <div id="box" class="card">
             <div class="card-header" style="background-color: #F9AC4E; color: white;">
                 Performance Profiles For Current Term
+            </div>
+            <%--TABLE INFO JUSTIN LAM--%>
+            <div class="container-fluid">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Advisor First Name</th>
+                            <th scope="col">Advisor Last Name</th>
+                            <th scope="col">Student First Name</th>
+                            <th scope="col">Student Last Name</th>
+                            <th scope="col">TUID</th>
+                            <th scope="col">Major</th>
+                            <th scope="col">Term</th>
+                            <th scope="col">Academic Standing</th>
+                            <th scope="col">Fly in 4</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Erin</td>
+                            <td>Spiotta</td>
+                            <td>John</td>
+                            <td>Boo</td>
+                            <td>666999666</td>
+                            <td>Biology</td>
+                            <td>FA18</td>
+                            <td>Academic Good Standing</td>
+                            <td>Yes</td>
+                            <td>Level 1</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                                 <tr>
+                            <td>Thomas</td>
+                            <td>Price</td>
+                            <td>Michael</td>
+                            <td>Robinson</td>
+                            <td>123123123</td>
+                            <td>Earth & Environmental Science</td>
+                            <td>FA18</td>
+                            <td>Academic Warning</td>
+                            <td>Yes</td>
+                            <td>Level 1</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                                     <tr>
+                            <td>Thomas</td>
+                            <td>Price</td>
+                            <td>Alexander</td>
+                            <td>Robson</td>
+                            <td>321321321</td>
+                            <td>Physics</td>
+                            <td>FA19</td>
+                            <td>Academic Probation</td>
+                            <td>No</td>
+                            <td>Level 2</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                                     <tr>
+                            <td>Erin</td>
+                            <td>Spiotta</td>
+                            <td>Jennifer</td>
+                            <td>Pinsker</td>
+                            <td>987654321</td>
+                            <td>Chemistry</td>
+                            <td>SP19</td>
+                            <td>Academic Good Standing</td>
+                            <td>No</td>
+                            <td>Level 2</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                                              <tr>
+                            <td>Stephanie</td>
+                            <td>Ballard</td>
+                            <td>Bob</td>
+                            <td>Robson</td>
+                            <td>980980765</td>
+                            <td>Information Science & Technology</td>
+                            <td>SP19</td>
+                            <td>Academic Good Standing</td>
+                            <td>Yes</td>
+                            <td>Level 2</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                                              <tr>
+                            <td>Stephanie</td>
+                            <td>Ballard</td>
+                            <td>Justin</td>
+                            <td>Lam</td>
+                            <td>915432123</td>
+                            <td>Information Science & Technology</td>
+                            <td>FA18</td>
+                            <td>Academic Good Standing</td>
+                            <td>No</td>
+                            <td>Level 2</td>
+                            <td><button class="btn btn-info">Performance Profile</button></td>
+
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="card-body">
                 <asp:ContentPlaceHolder ID="performace" runat="server">
