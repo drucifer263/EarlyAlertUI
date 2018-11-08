@@ -52,8 +52,8 @@
                     <div class="col-lg-4">
                         <asp:Label ID="lblDownlaod" runat="server" Font-Size="Small">Performance Template:</asp:Label>
                     </div>
-                    <div class="col-lg-2">
-                        <button id="btnDownload" class="btn btn-success btn-sm">Download</button>
+                    <div class="col-lg-3">
+                        <button id="btnDownload" class="btn btn-success btn-block">Download</button>
                     </div>
                 </div>
                 <hr />
@@ -66,8 +66,8 @@
                     <div class="col-lg-4">
                         <asp:Label ID="lblFile" runat="server" Font-Size="Small">File:</asp:Label>
                     </div>
-                    <div class="col-lg-2">
-                        <button id="btnFile" class="btn btn-light btn-sm">Choose A File</button>
+                    <div class="col-lg-3">
+                        <button id="btnFile" class="btn btn-light btn-block">Choose A File</button>
                     </div>
                 </div>
                 <div class="row" style="margin-top:1%">
@@ -77,14 +77,12 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-8"></div>
-                    <div class="col-lg-1">
-                        <button id="btnCancel" class="btn btn-light btn-sm">Cancel</button>
+                    <div class="col-lg-2">
+                        <button id="btnCancel" class="btn btn-light btn-block">Cancel</button>
+                    </div>                
+                    <div class="col-lg-2" style="margin-left:0%">
+                        <button id="btnSubmit" class="btn btn-danger btn-block">Submit</button>
                     </div>
-                    <div class="col-lg-1"></div>
-                    <div class="col-lg-1" style="margin-left:2%">
-                        <button id="btnSubmit" class="btn btn-danger btn-sm">Submit</button>
-                    </div>
-                    <div class="col-lg-1"></div>
                 </div>
             </div>
         </div>
