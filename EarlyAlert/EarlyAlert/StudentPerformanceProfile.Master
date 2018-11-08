@@ -1,0 +1,246 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="StudentPerformanceProfile.Master.cs" Inherits="EAS.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Student Performance Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%--Bootstrap Reference With JS Reference--%>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<%--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link rel="shortcut icon" href="Images/Tindex.ico">
+    <style>
+        html, body {
+            margin: 0px;
+            height: 100%;
+            width: 100%;
+            background-color: #F7F7F7;
+        }
+
+        #box {
+            margin: 2.5%;
+            box-shadow: 5px 5px 5px rgba(0,0,0,.4);
+        }
+    </style>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <%--Nav--%>
+        <nav class="navbar navbar-inverse" style="background-color: #9E1B34">
+            <div class="container-fluid">
+                <a class="navbar-left">
+                    <img src="images/Dashboard/cst_logo.png" style="border-radius: 2.5px; box-shadow: 5px 5px 5px rgba(70,70,70,.5)" />
+                </a>
+                <!-- Toggler/collapsibe Button -->
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <!-- Links -->
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="AdminDash.aspx" data-toggle="tooltip" title="Return to homepage">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="AdminTemplate.aspx" data-toggle="tooltip" title="Upload new data">Upload</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" data-toggle="tooltip" title="See deadlines">Deadlines</a>
+                        </li> 
+                        <li class="nav-item ">
+                            <a class="navbar-brand" href="#" data-toggle="tooltip" title="Logout">
+                                <img src="images/logout.png" id="logout" alt="logo" style="width: 50px">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <asp:ContentPlaceHolder ID="Nav" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </nav>
+
+        <%--Student Info Box--%>
+        <div id="box" class="card" style="clear: both">
+            <div class="card-header" style="background-color: #B4505D; color: white;">
+                Student Info
+            </div>
+            <%-- Student info --%>
+            <div class="container-fluid">
+                <table class="table">
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">TUID</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>915000111</td>
+                            <td>Sandy</td>
+                            <td>Yu</td>
+                            <td>tu______@Temple.edu</td>
+                            <td>888-888-8888</td>
+                        </tr>
+                    </tbody>
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">Major</th>
+                            <th scope="col">Grad Term</th>
+                            <th scope="col">Fly in 4</th>
+                            <th scope="col">Student Type</th>
+                            <th scope="col">Academic Standing</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Math and Computer Science with Teaching</td>
+                            <td>Spring 2020</td>
+                            <td>Yes</td>
+                            <td>Transfer</td>
+                            <td>Academic Good Standing</td>
+                        </tr>
+                    </tbody>
+
+                    <thead class="table-dark">
+                        <tr>
+                            <th scope="col">High School</th>
+                            <th scope="col">Gender</th>
+                            <th scope="col">Race</th>
+                            <th scope="col">Level</th>
+                            <th scope="col">Advisor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Bodine High School for International Affairs</td>
+                            <td>Female</td>
+                            <td>Hispanic</td>
+                            <td>Level 2</td>
+                            <td>Tom Price</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-body">
+                <asp:ContentPlaceHolder ID="Sinfo" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+
+        <%--Academic Danger History Box--%>
+        <div id="box" class="card">
+            <div class="card-header" style="background-color: #F9AC4E; color: white;">
+                Academic Danger History
+            </div>
+
+            <%-- History info --%>
+            <div class="container-fluid">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Term</th>
+                            <th scope="col">CRN</th>
+                            <th scope="col">Course</th>
+                            <th scope="col">Course No.</th>
+                            <th scope="col">Section No.</th>
+                            <th scope="col">Review Score</th>
+                            <th scope="col">Comments</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>2019036</td>
+                            <td>4847</td>
+                            <td>BIOL</td>
+                            <td>1111</td>
+                            <td>001</td>
+                            <td>68</td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <td>2019036</td>
+                            <td>1951</td>
+                            <td>CHEM</td>
+                            <td>1031</td>
+                            <td>002</td>
+                            <td>29</td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <td>2019003</td>
+                            <td>10762</td>
+                            <td>PHYS</td>
+                            <td>1061</td>
+                            <td>052</td>
+                            <td>84</td>
+                            <td></td>
+
+                        </tr>
+                        <tr>
+                            <td>2019003</td>
+                            <td>2585</td>
+                            <td>MATH</td>
+                            <td>1041</td>
+                            <td>010</td>
+                            <td>78</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2018036</td>
+                            <td>38411</td>
+                            <td>CIS</td>
+                            <td>1051</td>
+                            <td>004</td>
+                            <td>60</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>2018036</td>
+                            <td>38535</td>
+                            <td>CIS</td>
+                            <td>1057</td>
+                            <td>005</td>
+                            <td>25</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-body">
+                <asp:ContentPlaceHolder ID="History" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+        </div>
+    </form>
+
+    <%-- Collapsible footer info --%>
+    <footer id="accordion">
+        <div class="card">
+            <div class="card-header text-center">
+                <a class="card-link" data-toggle="collapse" href="#collapseOne">Info
+                </a>
+            </div>
+            <div id="collapseOne" class="collapse show text-center" data-parent="#accordion">
+                <div class="card-body">
+                    <p>CST Early Alert System &copy Justin Lam, Kevin Lo, Sandy Yu, Brett Mazzocchi, & Drew Watson </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

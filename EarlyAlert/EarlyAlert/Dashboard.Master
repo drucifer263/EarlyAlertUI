@@ -32,6 +32,18 @@
             var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
             chart.draw(data, options);
+
+            var btnPerformance_Click = function () {
+                window.location.href = "AdminStudentPerformanceProfile.aspx";
+            }
+
+            var performance = document.getElementsByClassName("btn btn-info");
+
+            for (var i = 0; i < performance.length; i++){
+                performance[i].addEventListener("click", btnPerformance_Click, false);
+            }
+            
+            document.getElementById("btnPerformanceP").onclick = btnPerformance_Click;
         }
     </script>
 
@@ -55,11 +67,12 @@
 <body>
     <form id="form1" runat="server">
         <%--Nav--%>
-        <nav class="navbar navbar-inverse" style="background-color: #9E1B34">
+        <nav class="navbar navbar-inverse" style="background-color: #9E1B34;color:whitesmoke">
             <div class="container-fluid">
                 <a class="navbar-left">
                     <img src="Images/Dashboard/cst_logo.png" style="border-radius: 2.5px; box-shadow: 5px 5px 5px rgba(70,70,70,.5)" />
                 </a>
+                <a href="AdminTemplate.aspx" style="color:white">Upload Performance Profile</a>
                 <asp:ContentPlaceHolder ID="Nav" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
@@ -215,7 +228,7 @@
                             <td>Academic Good Standing</td>
                             <td>Yes</td>
                             <td>Level 1</td>
-                            <td><button class="btn btn-info">Performance Profile</button></td>
+                            <td><button id="btnPerformanceP" class="btn btn-info">Performance Profile</button></td>
 
                         </tr>
                                  <tr>

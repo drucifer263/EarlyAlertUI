@@ -33,6 +33,7 @@
                 <a class="navbar-left">
                     <img src="Images/Dashboard/cst_logo.png" style="border-radius: 2.5px; box-shadow: 5px 5px 5px rgba(70,70,70,.5)" />
                 </a>
+                <a href="AdminDash.aspx" style="color:white">Dashboard</a>
                 <asp:ContentPlaceHolder ID="Nav" runat="server">
                 </asp:ContentPlaceHolder>
             </div>
