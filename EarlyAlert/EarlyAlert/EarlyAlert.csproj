@@ -80,6 +80,7 @@
     <Content Include="AdminTemplate.aspx" />
     <Content Include="AdvisorDash.aspx" />
     <Content Include="FacultyTemplate.aspx" />
+    <Content Include="images\Dashboard\cst_logo.png" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
